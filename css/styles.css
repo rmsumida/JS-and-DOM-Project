@@ -8,6 +8,10 @@
  *
 */
 
+/* ---- Add smooth scrolling to page ---- */
+html {
+    scroll-behavior: smooth;
+}
 
 /* ---- Base Rules ---- */
 body {

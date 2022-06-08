@@ -40,6 +40,23 @@
 
 // build the nav
 
+const navFragment = document.createDocumentFragment();  // New fragment to store new list items
+const sectionList = document.querySelectorAll('section');  // Create a node list of all section elements
+
+for (let i = 0; i < sectionList.length; i++) {
+    const newItem = document.createElement('li');
+    const newLink = document.createElement('a');
+    let sectionData = sectionList[i].getAttribute('data-nav');
+    let sectionId = sectionList[i].id;
+    //newItem.className = 'navbar__item';  // Set the class name of the li element
+    newLink.className = 'menu__link';  // 
+    newLink.href = '#' + sectionId;
+    newLink.innerText = sectionData;
+    newItem.appendChild(newLink);
+    navFragment.appendChild(newItem);
+}
+
+document.querySelector('ul#navbar__list').appendChild(navFragment);
 
 // Add class 'active' to section when near top of viewport
 
