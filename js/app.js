@@ -23,6 +23,7 @@
  * 
 */
 
+const sectionList = document.querySelectorAll('section');  // Create a node list of all section elements
 
 /**
  * End Global Variables
@@ -41,7 +42,6 @@
 // build the nav
 
 const navFragment = document.createDocumentFragment();  // New fragment to store new list items
-const sectionList = document.querySelectorAll('section');  // Create a node list of all section elements
 
 // for loop to build the nav list based on the sections in the page
 for (let i = 0; i < sectionList.length; i++) {
@@ -58,10 +58,11 @@ for (let i = 0; i < sectionList.length; i++) {
 
 document.querySelector('ul#navbar__list').appendChild(navFragment);  // Append the nav fragment to the ul with id navbar__list
 
+
 // Add class 'active' to section when near top of viewport
 
 /**
-// Intersection Observer w/o inline functions
+// Intersection Observer w/o inline function.  This code no longer used in favor of code with inline function
 //  For observer target elements use the variable 'sectionList' previously declared for building the nav
 //  Create variable for the root element
 const sectionContainer = document.querySelector('section.section-container');
@@ -90,7 +91,7 @@ function changeActive (entries, observer) {
 */
 
 
-// Intersection Observer with inline functions
+// Intersection Observer with inline function
 //  For observer target elements use the variable 'sectionList' previously declared for building the nav
 //  Create variable for the root element
 const sectionContainer = document.querySelector('section.section-container');
@@ -114,25 +115,6 @@ sectionList.forEach(section => {
     sectionIoObserver.observe(section);
 });
 
-/**
-let sectionObserver = new IntersectionObserver((entries, self) => {
-    console.log(entries);
-        entries.forEach(entry => {
-            if(entry.isIntersecting) {
-                let targetSectionId = entry.target.id; // Observer target element id
-                let activeSection = document.querySelector('section.active-section');  // Section element with class 'active-class'
-                let changeTargetToActive = document.querySelector('#' + targetSectionId);  //  Observer target that triggered intersection.  Change this to active
-                activeSection.classList.remove('active-section');  // Remove class 'active-section' from target
-                changeTargetToActive.classList.add('active-section');  // Add class 'active-section' to target
-            }
-        })
-        }, observerOptions);
-
-// Observe each each section
-sectionList.forEach(section => {
-    sectionObserver.observe(section);
-});
-*/
 
 // Scroll to anchor ID using scrollTO event
 
@@ -142,11 +124,5 @@ sectionList.forEach(section => {
  * Begin Events
  * 
 */
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
 
 
