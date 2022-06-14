@@ -67,7 +67,6 @@ main {
 section {
     position: relative;
     min-height: 80vh;
-    border: 2px solid red;
 }
 
 
