@@ -1,13 +1,35 @@
-# Landing Page Project
+# Udacity Front End Web Developer: Landing Page Project
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Site Structure](#Site Structure)
+* [Landing Page Behavior Added to Starter Code](#Landing Page Behavior Added to Starter Code)
+* [Code Documentation](#Code Documentation)
+* [License](#License)
 
-## Instructions
+## Site Structure
+- css
+  - styles.css    
+- index.html
+- js
+  - app.js
+- LICENSE
+- README.md
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+## Landing Page Behavior Added to Starter Code
+- Enabled smooth scrolling using CSS scroll-behavior property
+- Dynamically built navigation menu based on the number of sections on the page
+- Intersection Observer API
+  - Observer to watch when sections are near the top of page
+  - Inline callback function to toggle class "active-section" for both sections and menu item elements
+- CSS styling for menu items when corresponding section is active
+- Responsive navigation bar for small screens
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Code Documentation
+- Changed class names to use hyphen between words instead of double underscore
+- Replaced all usage of single quote with double quotes
+- Comments included at the begining of code procedures.  Also included comments describing each statement.
+- Removed starter code comments where they were no longer needed
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## License
+[MIT License](LICENSE)
