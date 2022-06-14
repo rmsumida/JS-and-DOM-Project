@@ -49,6 +49,7 @@ for (let i = 0; i < sectionList.length; i++) {
     const newLink = document.createElement('a');
     let sectionData = sectionList[i].getAttribute('data-nav'); // Get data attribute of section
     let sectionId = sectionList[i].id;  // Get id of section
+    newItem.className = sectionId;  // Set the class name of the li tag to use the section id
     newLink.className = 'menu__link';  // Set the class name of the anchor tag to menu__link
     newLink.href = '#' + sectionId;  // Set the href of anchor tag to use the section id
     newLink.innerText = sectionData;  // Set the anchor text to use the data-nav attirbute value
@@ -103,10 +104,11 @@ const sectionIoOptions = {
     threshold: 0  // Default value.  Element will be observed as soon as one pixel is visable
 }; 
 
-//  Create the Intersection Observer
+//  Create the Intersection Observer with inline function to toggle class
 const sectionIoObserver = new IntersectionObserver ((entries, observer) => {
     entries.forEach(entry => {
         entry.target.classList.toggle('active-section', entry.isIntersecting);
+        document.querySelector('li.' + entry.target.id).classList.toggle('active-section', entry.isIntersecting);
     });
 },sectionIoOptions);
 
