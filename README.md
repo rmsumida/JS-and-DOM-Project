@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-* [Site Structure](#Site Structure)
-* [Landing Page Behavior Added to Starter Code](#Landing Page Behavior Added to Starter Code)
-* [Code Documentation](#Code Documentation)
+* [Site Structure](#Site-Structure)
+* [Landing Page Behavior Added to Starter Code](#Landing-Page-Behavior-Added-to-Starter-Code)
+* [Code Documentation](#Code-Documentation)
 * [License](#License)
 
 ## Site Structure
