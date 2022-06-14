@@ -54,7 +54,7 @@ main {
     margin: 10vh 1em 10vh;
 }
 
-.nav__container {
+.nav-container {
     display: flex;
     justify-content: space-between;
 }
@@ -73,34 +73,34 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
-.nav__container {
+.nav-container {
     background: white;
 }
 
-.navbar__menu {
+.navbar-menu {
     background: linear-gradient(-90deg, rgba(136,203,171,1) 0%, rgba(0,13,60,1) 100%);
 }
 
-.navbar__menu ul {
+.navbar-menu ul {
     padding-left: 0;
     margin: auto;
     text-align: right;
 }
 
-.navbar__menu li {
+.navbar-menu li {
     display: inline-block;
     background: white;
 }
 
-.navbar__menu .active-section {
+.navbar-menu .active-section {
     background: transparent;
 }
 
-.navbar__menu .active-section a {
+.navbar-menu .active-section a {
     color: white;
 }
 
-.navbar__menu .menu__link {
+.navbar-menu .menu-link {
     display: block;
     padding: 1em;
     font-weight: bold;
@@ -109,27 +109,27 @@ section {
 }
 
 @media only screen and (max-width: 32.5em){
-    .navbar__menu {
+    .navbar-menu {
         background: white;
     }
 
-    .navbar__menu .active-section {
+    .navbar-menu .active-section {
         background: rgb(136,203,171);
     }
     
-    .navbar__menu .active-section a {
+    .navbar-menu .active-section a {
         color: white;
     }
 }
 
-.navbar__menu .menu__link:hover {
+.navbar-menu .menu-link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
 }
 
 /* Header Styles */
-.page__header {
+.page-header {
 /*    background: #fff; */
     position: fixed;
     top: 0;
@@ -138,32 +138,32 @@ section {
 }
 
 /* Footer Styles */
-.page__footer {
+.page-footer {
     background: #000;
     padding: 3em;
     color: #fff;
 }
 
-.page__footer p{
+.page-footer p{
     color: #fff;
 }
 
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
-.landing__container {
+.landing-container {
     padding: 1em;
     text-align: left;
 }
 
 @media only screen and (min-width: 35em){
-    .landing__container {
+    .landing-container {
         max-width: 50em;
         padding: 4em;
     }
 }
 
-section:nth-of-type(even) .landing__container {
+section:nth-of-type(even) .landing-container {
     margin-right: 0;
     margin-left: auto;
     text-align: right; 
@@ -172,7 +172,7 @@ section:nth-of-type(even) .landing__container {
 /* Background Circles */
 /* Note that background circles are created with psuedo elements before and after */
 /* Circles appear to be random do to use of :nth-of-type psuedo class */
-section:nth-of-type(odd) .landing__container::before {
+section:nth-of-type(odd) .landing-container::before {
     content: '';
     background: rgba(255, 255, 255, 0.187);
     position: absolute;
@@ -184,7 +184,7 @@ section:nth-of-type(odd) .landing__container::before {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(even) .landing__container::before {
+section:nth-of-type(even) .landing-container::before {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -199,7 +199,7 @@ section:nth-of-type(even) .landing__container::before {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n) .landing__container::after {
+section:nth-of-type(3n) .landing-container::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -214,7 +214,7 @@ section:nth-of-type(3n) .landing__container::after {
     transition: ease 0.5s all;
 }
 
-section:nth-of-type(3n + 1) .landing__container::after {
+section:nth-of-type(3n + 1) .landing-container::after {
     content: '';
     background: rgb(255,255,255);
     background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
@@ -238,12 +238,12 @@ section.active-section {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
-section.active-section .landing__container::before {
+section.active-section .landing-container::before {
     opacity: 1;
     animation: rotate 4s linear 0s infinite forwards;
 }
 
-section.active-section .landing__container::after {
+section.active-section .landing-container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
 }

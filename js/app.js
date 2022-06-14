@@ -23,7 +23,7 @@
  * 
 */
 
-const sectionList = document.querySelectorAll('section');  // Create a node list of all section elements
+const sectionList = document.querySelectorAll("section");  // Create a node list of all section elements
 
 /**
  * End Global Variables
@@ -40,38 +40,42 @@ const sectionList = document.querySelectorAll('section');  // Create a node list
 */
 
 // build the nav
+//  New fragment to store list items
+const navFragment = document.createDocumentFragment();
 
-const navFragment = document.createDocumentFragment();  // New fragment to store new list items
-
-// for loop to build the nav list based on the sections in the page
+// for loop to build the nav list based on the sections on the page
 for (let i = 0; i < sectionList.length; i++) {
-    const newItem = document.createElement('li');
-    const newLink = document.createElement('a');
-    let sectionData = sectionList[i].getAttribute('data-nav'); // Get data attribute of section
+    const newItem = document.createElement("li");
+    const newLink = document.createElement("a");
+    let sectionData = sectionList[i].getAttribute("data-nav"); // Get data attribute of section
     let sectionId = sectionList[i].id;  // Get id of section
     newItem.className = sectionId;  // Set the class name of the li tag to use the section id
-    newLink.className = 'menu__link';  // Set the class name of the anchor tag to menu__link
-    newLink.href = '#' + sectionId;  // Set the href of anchor tag to use the section id
+    newLink.className = "menu-link";  // Set the class name of the anchor tag to menu-link
+    newLink.href = "#" + sectionId;  // Set the href of anchor tag to use the section id
     newLink.innerText = sectionData;  // Set the anchor text to use the data-nav attirbute value
     newItem.appendChild(newLink);  // Append the anchor tag to the li tag
     navFragment.appendChild(newItem);  // Append the li and anchor to the fragment
 }
 
-document.querySelector('ul#navbar__list').appendChild(navFragment);  // Append the nav fragment to the ul with id navbar__list
+//  Append the nav fragment to the ul with id navbar-list
+document.querySelector("ul#navbar-list").appendChild(navFragment);
 
 
-// Add class 'active' to section when near top of viewport
+// Add class "active" to section when near top of viewport
 
 /**
-// Intersection Observer w/o inline function.  This code no longer used in favor of code with inline function
-//  For observer target elements use the variable 'sectionList' previously declared for building the nav
+Intersection Observer w/o inline function.
+This code no longer used in favor of code below with theh inline function
+This code will remain in the project file as a reference
+For observer target elements use the variable "sectionList" previously declared in the global variables section
+
 //  Create variable for the root element
-const sectionContainer = document.querySelector('section.section-container');
+const sectionContainer = document.querySelector("section.section-container");
 
 //  Intersection Observer Options
 const sectionIoOptions = {
     root: sectionContainer,  // Set the section-container as the root element 
-    rootMargin: '-25% 0px -75% 0px',
+    rootMargin: "-25% 0px -75% 0px",
     threshold: 0  // Default value.  Element will be observed as soon as one pixel is visable
 };
 
@@ -86,29 +90,32 @@ sectionList.forEach(section => {
 //  Callback function used for sectionIoObserver
 function changeActive (entries, observer) {
     entries.forEach(entry => {
-        entry.target.classList.toggle('active-section', entry.isIntersecting);
+        entry.target.classList.toggle("active-section", entry.isIntersecting);
     });
 };
 */
 
 
-// Intersection Observer with inline function
-//  For observer target elements use the variable 'sectionList' previously declared for building the nav
+/**
+Intersection Observer with inline function
+For observer target elements use the variable "sectionList" previously declared in the global variables section
+*/
+
 //  Create variable for the root element
-const sectionContainer = document.querySelector('section.section-container');
+const sectionContainer = document.querySelector("section.section-container");
 
 //  Intersection Observer Options
 const sectionIoOptions = {
     root: sectionContainer,  // Set the section-container as the root element 
-    rootMargin: '-25% 0px -75% 0px',
+    rootMargin: "-25% 0px -75% 0px",
     threshold: 0  // Default value.  Element will be observed as soon as one pixel is visable
 }; 
 
 //  Create the Intersection Observer with inline function to toggle class
 const sectionIoObserver = new IntersectionObserver ((entries, observer) => {
     entries.forEach(entry => {
-        entry.target.classList.toggle('active-section', entry.isIntersecting);
-        document.querySelector('li.' + entry.target.id).classList.toggle('active-section', entry.isIntersecting);
+        entry.target.classList.toggle("active-section", entry.isIntersecting);
+        document.querySelector("li." + entry.target.id).classList.toggle("active-section", entry.isIntersecting);
     });
 },sectionIoOptions);
 
@@ -117,14 +124,6 @@ sectionList.forEach(section => {
     sectionIoObserver.observe(section);
 });
 
-
-// Scroll to anchor ID using scrollTO event
-
-
 /**
  * End Main Functions
- * Begin Events
- * 
 */
-
-
