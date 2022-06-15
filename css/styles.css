@@ -9,9 +9,7 @@
 */
 
 /* ---- Add smooth scrolling to page ---- */
-html {
-    scroll-behavior: smooth;
-}
+
 
 /* ---- Base Rules ---- */
 body {
@@ -89,14 +87,10 @@ section {
 
 .navbar-menu li {
     display: inline-block;
-    background: white;
 }
 
-.navbar-menu .active-section {
+.navbar-menu .menu-link.active-section {
     background: transparent;
-}
-
-.navbar-menu .active-section a {
     color: white;
 }
 
@@ -106,6 +100,8 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
+    border: none;
+    background-color: white;
 }
 
 @media only screen and (max-width: 32.5em){
