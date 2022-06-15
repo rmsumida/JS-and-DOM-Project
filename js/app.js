@@ -23,8 +23,13 @@
  * 
 */
 
-const sectionList = document.querySelectorAll("section");  // Create a node list of all section elements
+
+/** Create a node list of all elements with a tag of "section" */
+const sectionList = document.querySelectorAll("section");
+
+/** Create a node list of all elements with an id of "navbar-list" */
 const navbarList = document.getElementById("navbar-list");
+
 
 /**
  * End Global Variables
@@ -32,123 +37,148 @@ const navbarList = document.getElementById("navbar-list");
  * 
 */
 
-// Scroll to event target
-function scrollTo(evt) {
-    console.log(evt.target + " was clicked.")
-    document.querySelector("section#" + evt.target.id).scrollIntoView({
-        behavior: "smooth"
-    });
-};
-
 /**
  * End Helper Functions
  * Begin Main Functions
  * 
 */
 
-// Code to Build the Nav Menu
-// For loop will be used to create  li > a structure.
-// New fragment to store list items
+
+/** Build the Nav Menu
+* For loop will be used to create <li> <button> structure for every <section> in DOM.
+*/
+
+/** Create fragment to temporarily store navbar elements */
 const navFragment = document.createDocumentFragment();
 
-// for loop to build the nav list based on the sections on the page
+/** A for loop to build the navbar using the <section> elements in the DOM */
+/** TODO: Try to recreate with forEach loop */
 for (let i = 0; i < sectionList.length; i++) {
-    let newItem = document.createElement("li");
+    let newLi = document.createElement("li");
     let newBtn = document.createElement("button");
-    //let newLink = document.createElement("a");
-    let sectionData = sectionList[i].getAttribute("data-nav"); // Get data attribute of section
-    let sectionId = sectionList[i].id;  // Get id of section
-    newItem.className = sectionId;  // Set the class name of the li tag to use the section id
-    //newLink.className = "menu-link";  // Set the class name of the anchor tag to menu-link
+    /** Retrieve the data attribute of <section> to be used as <button> text */
+    let sectionData = sectionList[i].getAttribute("data-nav");
+    /** Retrieve id of <section> so that it can be used as <button> id */
+    let sectionId = sectionList[i].id;
+    /** Set the <button> id to be the same as the <section> id */
     newBtn.id = sectionId;
-    newBtn.className = " menu-link";
+    /** Set the <button> class to menu-link for CSS styling */
+    newBtn.className = "menu-link";
+    /** Set the <button> type to "button" */
     newBtn.setAttribute("type", "button");
-    //newLink.href = "#" + sectionId;  // Set the href of anchor tag to use the section id
-    //newLink.innerText = sectionData;  // Set the anchor text to use the data-nav attirbute value
+    /** Set the <button> text to use <section> data attribute */
     newBtn.innerText = sectionData;
-    //newItem.appendChild(newLink);  // Append the anchor tag to the li tag
-    newItem.appendChild(newBtn);
-    navFragment.appendChild(newItem);  // Append the li and anchor to the fragment
+    /** Append <button> to <li> */
+    newLi.appendChild(newBtn);
+    /** Append <li> node to the temporary fragment */
+    navFragment.appendChild(newLi);
 }
 
-// Append the nav fragment to the ul with id navbar-list
+/** Append the temporary fragment and child nodes to ul#navbar-list */
 document.querySelector("ul#navbar-list").appendChild(navFragment);
-// Add Event Listener to navbar-list
+/** Add an event listener to the ul#navbar-list element
+ * Event target will be used to scroll to the section clicked in nav menu
+ */
 document.querySelector("ul#navbar-list").addEventListener('click',scrollTo);
 
 
-
-
-
 /**
-* Intersection Observer w/o inline function.
-* The following IO code is no longer used in favor of IO code in the next section
-* that includes an inline function. This code will remain in the project file as
-* a reference.
-* The variable "sectionList" that was previously declared in the global variables
-* section will be used as the observer targets.
+* Intersection Observer w/o Inline Function
+* This IO code is no longer used in favor of the IO code in the next
+* section titled "Intersection Observer with Inline Function".
+* This code will remain in the project file as a reference.
+*/
+/**
+* The variable "sectionList" declared in section Define Global Variables
+* will be used as the observer targets.
 */
 
+/** Retrieve element section.section-container to be used as the root element */
+//const sectionContainer = document.querySelector("section.section-container");
+
+/** Intersection Observer Options */
+//const sectionIoOptions = {
+//    /** Set the section.section-container as the root element */
+//    root: sectionContainer,
+//    /** Set root bounding box to be exactly 25% from top */
+//    rootMargin: "-25% 0px -75% 0px",
+//    /** Default value. Element will be observed as soon as one pixel is visable */
+//    threshold: 0
+//};
+
+/** Create the intersection observer */
+//const sectionIoObserver = new IntersectionObserver (changeActive,sectionIoOptions);
+
+/** Set the intersection observer targets */
+//sectionList.forEach(section => {
+//    sectionIoObserver.observe(section);
+//});
+
+/** Callback function used for sectionIoObserver */
+//function changeActive (entries, observer) {
+//    entries.forEach(entry => {
+//        entry.target.classList.toggle("active-section", entry.isIntersecting);
+//    });
+//};
+
 /**
-//  Create variable for the root element
+* End Intersection Observer w/o Inline Function
+*/
+
+
+/**
+* Intersection Observer with Inline Function
+*/
+/**
+* The variable "sectionList" declared in the section Define Global Variables
+* will be used as the observer targets.
+*/
+
+
+/** Retrieve element section.section-container to be used as the root element */
 const sectionContainer = document.querySelector("section.section-container");
 
-//  Intersection Observer Options
+/** Intersection Observer Options */
 const sectionIoOptions = {
-    root: sectionContainer,  // Set the section-container as the root element 
+    /** Set the section.section-container as the root element */
+    root: sectionContainer,
+    /** Set root bounding box to be exactly 25% from top */
     rootMargin: "-25% 0px -75% 0px",
-    threshold: 0  // Default value.  Element will be observed as soon as one pixel is visable
+    /** Default value. Element will be observed as soon as one pixel is visable */
+    threshold: 0
 };
 
-//  Create the intersection observer
-const sectionIoObserver = new IntersectionObserver (changeActive,sectionIoOptions);
-
-//  Set the intersection observer targets
-sectionList.forEach(section => {
-    sectionIoObserver.observe(section);
-});
-
-//  Callback function used for sectionIoObserver
-function changeActive (entries, observer) {
-    entries.forEach(entry => {
-        entry.target.classList.toggle("active-section", entry.isIntersecting);
-    });
-};
-*/
-
-
-/**
-* Intersection Observer with inline function
-* The variable "sectionList" that was previously declared in the global variables
-* section will be used as the observer targets
-*/
-
-//  Create variable for the root element
-const sectionContainer = document.querySelector("section.section-container");
-
-//  Intersection Observer Options
-const sectionIoOptions = {
-    root: sectionContainer,  // Set the section-container as the root element 
-    rootMargin: "-25% 0px -75% 0px",
-    threshold: 0  // Default value.  Element will be observed as soon as one pixel is visable
-}; 
-
-//  Create the Intersection Observer with inline function to toggle class
+/** Create the Intersection Observer with inline callback function */
 const sectionIoObserver = new IntersectionObserver ((entries, observer) => {
     entries.forEach(entry => {
+        /** Toggle "active-section" class of the section in view */
         entry.target.classList.toggle("active-section", entry.isIntersecting);
-        //document.querySelector("li." + entry.target.id).classList.toggle("active-section", entry.isIntersecting);
+        /** Toggle "active-section" class of the section's corresponding menu item */
         document.querySelector(".menu-link#" + entry.target.id).classList.toggle("active-section", entry.isIntersecting);
     });
 },sectionIoOptions);
 
-//  Set the intersection observer targets
+/** Set the intersection observer targets */
 sectionList.forEach(section => {
     sectionIoObserver.observe(section);
 });
 
+/**
+ * End Intersection Observer with Inline Function
+ */
 
 
+/** 
+ * Scroll to Section When Clicked
+ * Function uses "scrollIntoView" to scroll to the section that is clicked
+ * on the navbar menu.
+ * */
+function scrollTo(evt) {
+    evt.preventDefault();
+    document.querySelector("section#" + evt.target.id).scrollIntoView({
+        behavior: "smooth"
+    });
+};
 
 /**
  * End Main Functions
